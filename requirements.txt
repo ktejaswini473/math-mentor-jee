@@ -4,4 +4,4 @@ langchain-openai==0.1.7
 langchain-core==0.1.53
 pydantic==1.10.18
 python-dotenv==1.0.1
-openai==1.51.0
+openai==0.28.1
