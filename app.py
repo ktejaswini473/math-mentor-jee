@@ -4,9 +4,9 @@ import json
 import base64
 from dotenv import load_dotenv
 from langgraph.graph import StateGraph, END
-from langchain.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
-from langchain.schema.output_parser import StrOutputParser
+from langchain_core.output_parsers import StrOutputParser
 from openai import OpenAI
 from pydantic import BaseModel
 from typing import Optional
@@ -207,3 +207,5 @@ if extracted:
                     "correction_comment": comment
                 })
                 st.success("Saved correction — future solutions will improve")
+
+st.info("Thank you for Giving me this oppurtunity")
