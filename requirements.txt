@@ -1,6 +1,7 @@
 streamlit==1.32.0
 langgraph==0.0.26
 langchain-openai==0.1.7
+langchain-core==0.1.53
 pydantic==1.10.18
 python-dotenv==1.0.1
 openai==1.51.0
