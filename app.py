@@ -7,18 +7,19 @@ from langgraph.graph import StateGraph, END
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
-from openai import OpenAI
+import openai  # old style <1.0
 from pydantic import BaseModel
 from typing import Optional
 import tempfile
 
 load_dotenv()
 
-if not os.getenv("OPENAI_API_KEY"):
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+if not openai.api_key:
     st.error("OPENAI_API_KEY missing in .env — add valid key and restart.")
     st.stop()
 
-client = OpenAI()
 llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.0)
 
 KB_PATH = "kb_docs.json"
@@ -135,7 +136,7 @@ elif input_mode == "Image":
         bytes_data = uploaded.getvalue()
         base64_image = base64.b64encode(bytes_data).decode('utf-8')
         with st.spinner("Extracting text with GPT-4o vision..."):
-            response = client.chat.completions.create(
+            response = openai.ChatCompletion.create(
                 model="gpt-4o",
                 messages=[
                     {"role": "system", "content": "Extract the exact math problem text from the image. Preserve LaTeX if present. Transcribe handwritten accurately."},
@@ -153,8 +154,8 @@ else:  # Audio
             tmp_path = tmp.name
         with st.spinner("Transcribing with Whisper API..."):
             with open(tmp_path, "rb") as audio_file:
-                transcript = client.audio.transcriptions.create(model="whisper-1", file=audio_file)
-        extracted = transcript.text
+                transcript = openai.Audio.transcribe("whisper-1", audio_file)
+        extracted = transcript["text"]
         os.unlink(tmp_path)
 
 if extracted:
@@ -208,4 +209,4 @@ if extracted:
                 })
                 st.success("Saved correction — future solutions will improve")
 
-st.info("Thank you for Giving me this oppurtunity")
+st.info("🌍")
