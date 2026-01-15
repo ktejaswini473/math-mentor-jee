@@ -1,0 +1,6 @@
+[
+  {"title": "Quadratic Formula", "content": "For ax² + bx + c = 0, roots are x = [-b ± sqrt(b² - 4ac)] / (2a). Discriminant D = b² - 4ac determines nature."},
+  {"title": "Binomial Probability", "content": "P(k successes in n trials) = C(n,k) * p^k * (1-p)^(n-k)"},
+  {"title": "Derivative Rules", "content": "Power rule: d/dx x^n = n x^{n-1}. Chain rule: d/dx f(g(x)) = f'(g(x)) * g'(x)."},
+  {"title": "Common Mistake - Sign Errors", "content": "Students often forget the negative sign in quadratic formula or when expanding (a-b)^2."}
+]

@@ -1,0 +1,10 @@
+streamlit==1.32.0
+langchain==0.1.20
+langchain-community==0.0.38
+langgraph==0.0.26
+langchain-openai==0.1.7
+sentence-transformers==2.7.0
+easyocr==1.7.1
+faster-whisper==1.0.2
+pydantic==1.10.18
+python-dotenv==1.0.1
